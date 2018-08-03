@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <img src="assets/imgs/teste.jpg">
+    <ion-card-content>
+      <p>Quero saber quem é esse gato!!!</p>
+    </ion-card-content>
+    
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-start clear color="danger" (click)="like()">
+            <ion-icon name="heart" *ngIf="likeCard"></ion-icon>
+          <ion-icon name="heart-outline" *ngIf="!likeCard"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-start clear>
+          <ion-icon name="text"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          11h ago
+        </ion-note>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-fab right bottom>
+
+      <button ion-fab color='danger' (click) = "addCard()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab>
+</ion-content>
