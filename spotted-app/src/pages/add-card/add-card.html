@@ -20,13 +20,13 @@
     </ion-item>
       
     <ion-item>
-      <ion-input type="textarea" placeholder="Texto" #text></ion-input>
+      <ion-input type="text" placeholder="Texto" [(ngModel)]="model.texto"></ion-input>
     </ion-item>
   </ion-card>
     
       <ion-fab right bottom>
 
-          <button ion-fab color='danger' (click) = "addCard(text.value)">
+          <button ion-fab color='danger' (click) = "addCard()">
             <ion-icon name="checkmark"></ion-icon>
           </button>
         </ion-fab>

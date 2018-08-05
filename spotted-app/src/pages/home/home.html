@@ -8,10 +8,10 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <img src="assets/imgs/teste.jpg">
+  <ion-card *ngFor="let spotted of spotteds">
+    <img src= "{{spotted.foto}}">
     <ion-card-content>
-      <p>Quero saber quem é esse gato!!!</p>
+      <p>{{spotted.spotted.texto}}</p>
     </ion-card-content>
     
     <ion-row>

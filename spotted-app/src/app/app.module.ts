@@ -9,6 +9,9 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AddCardPage } from '../pages/add-card/add-card';
+import { IonicStorageModule } from '@ionic/storage';
+import { SpottedProvider } from '../providers/spotted/spotted';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,7 @@ import { AddCardPage } from '../pages/add-card/add-card';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -31,7 +35,11 @@ import { AddCardPage } from '../pages/add-card/add-card';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SpottedProvider,
+    DatePipe,
+    SpottedProvider
+
   ]
 })
 export class AppModule {}
