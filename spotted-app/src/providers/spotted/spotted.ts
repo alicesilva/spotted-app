@@ -14,6 +14,7 @@ import { Storage } from '@ionic/storage';
 export class SpottedProvider {
 
   constructor(private storage: Storage, private datepipe: DatePipe) {
+    this.storage.clear();
     console.log('Hello SpottedProvider Provider');
   }
  
@@ -55,6 +56,7 @@ export class SpottedProvider {
  
 export class Spotted {
   texto: string;
+  foto;
 }
  
 export class SpottedList {

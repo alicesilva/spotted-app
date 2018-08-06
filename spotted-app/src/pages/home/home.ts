@@ -44,7 +44,8 @@ export class HomePage {
      let hourAtual = new Date
 
   }
-  like(){
+  like(teste){
+    console.log(teste)
     if(this.likeCard){
       this.likeCard = false;
     }else{

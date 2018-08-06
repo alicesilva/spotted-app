@@ -12,6 +12,9 @@ import { AddCardPage } from '../pages/add-card/add-card';
 import { IonicStorageModule } from '@ionic/storage';
 import { SpottedProvider } from '../providers/spotted/spotted';
 import { DatePipe } from '@angular/common';
+import { Camera } from '@ionic-native/camera';
+import { FileProvider } from '../providers/file/file';
+import { File } from '@ionic-native/file';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { DatePipe } from '@angular/common';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SpottedProvider,
     DatePipe,
-    SpottedProvider
+    SpottedProvider,
+    Camera,
+    FileProvider,
+    File
 
   ]
 })
