@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -9,11 +12,9 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AddCardPage } from '../pages/add-card/add-card';
-import { IonicStorageModule } from '@ionic/storage';
 import { SpottedProvider } from '../providers/spotted/spotted';
 import { DatePipe } from '@angular/common';
 import { Camera } from '@ionic-native/camera';
-import { FileProvider } from '../providers/file/file';
 import { File } from '@ionic-native/file';
 
 @NgModule({
@@ -26,7 +27,15 @@ import { File } from '@ionic-native/file';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyCOiT918ExQJS6lLIMpr67nxcC2A_9Nugc",
+      authDomain: "spotted-4a6d0.firebaseapp.com",
+      databaseURL: "https://spotted-4a6d0.firebaseio.com/",
+      projectId: "spotted-4a6d0",
+      storageBucket: "gs://spotted-4a6d0.appspot.com",
+      messagingSenderId: "89368252269"
+    }),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,9 +50,7 @@ import { File } from '@ionic-native/file';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SpottedProvider,
     DatePipe,
-    SpottedProvider,
     Camera,
-    FileProvider,
     File
 
   ]

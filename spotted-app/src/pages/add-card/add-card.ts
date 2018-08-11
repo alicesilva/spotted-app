@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ViewController, NavParams, ActionSheetController} from 'ionic-angular';
 import { HomePage } from '../home/home';
-import { Spotted, SpottedProvider } from '../../providers/spotted/spotted';
+import {SpottedProvider } from '../../providers/spotted/spotted';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { FileProvider } from '../../providers/file/file';
+import { Spotted } from '../../models/spotted';
 
 /**
  * Generated class for the AddCardPage page.
@@ -19,18 +19,42 @@ import { FileProvider } from '../../providers/file/file';
 })
 export class AddCardPage {
 
-  model: Spotted;
+  spotted: Spotted
+  public cameraImage : String
+
+ // model: Spotted;
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams,
-    private spottedProvider: SpottedProvider, private camera: Camera, public actionSheetCtrl: ActionSheetController,
-    private fileProvider: FileProvider) {
-      this.model = new Spotted();
+    private spottedProvider: SpottedProvider, private camera: Camera, public actionSheetCtrl: ActionSheetController) {
+      this.spotted = new Spotted();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddCardPage');
   }
 
-  addFoto(){
+  addFoto():void {
+    let actionSheet = this.actionSheetCtrl.create({
+      enableBackdropDismiss: true,
+      buttons: [
+        {
+          text: 'Take a picture',
+          icon: 'camera',
+          handler: () => {
+           this.spottedProvider.uploadFromCamera();
+          }
+        }, {
+          text: 'From gallery',
+          icon: 'images',
+          handler: () => {
+            this.spottedProvider.uploadFromGallery();
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  /*addFoto(){
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Foto',
       buttons: [
@@ -50,7 +74,7 @@ export class AddCardPage {
         }
       ]
     });
-    actionSheet.present();
+    actionSheet.present();*/
 
     /*const options: CameraOptions = {
       quality: 100,
@@ -69,9 +93,9 @@ export class AddCardPage {
     }).catch((error) => {
       console.error(error);
     });*/
-  }
+//}
 
-  abrirCamera(){
+  /*abrirCamera(){
     this.fileProvider.selecionaCamera().then(result => {
       console.log(result);
       if(result != null) {
@@ -84,7 +108,7 @@ export class AddCardPage {
 
   selecionaGaleria(){
 
-  }
+  }*/
 
 
   addCard() {
@@ -113,7 +137,8 @@ export class AddCardPage {
   }
 
   private saveSpotted() {
-      return this.spottedProvider.insert(this.model);
+    this.spotted.foto = this.spottedProvider.myPhotoURL;
+    return this.spottedProvider.save(this.spotted)
   }
 
 }

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ModalController, NavController, NavParams} from 'ionic-angular';
 import { AddCardPage } from '../add-card/add-card';
-import {SpottedProvider, Spotted, SpottedList} from '../../providers/spotted/spotted'
+import {SpottedProvider} from '../../providers/spotted/spotted'
+import { Observable } from 'rxjs/Observable';
+import { Spotted } from '../../models/spotted';
 
 @Component({
   selector: 'page-home',
@@ -11,7 +13,7 @@ export class HomePage {
 
   likeCard:Boolean = false
 
-  spotteds: SpottedList[]
+  spotteds: Array<any>
   
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams,
     private spottedProvider: SpottedProvider) {
@@ -19,14 +21,20 @@ export class HomePage {
     //card.texto = this.navParams.data.texto
     //card.foto = this.navParams.data.foto
     //this.spotteds.push(card)
+    //console.log(this.spottedProvider.getAll().valueChanges().toArray())
+    //this.spottedProvider.getAll().valueChanges().subscribe(spotteds=>{
+      //console.log(spotteds)
+    //});
+    this.spottedProvider.getAll().valueChanges().subscribe(spotteds=>{
+      this.spotteds = spotteds
+      console.log("datas", spotteds)
+    },(err)=>{
+      console.log("probleme : ", err)
+    });
+    //console.log(this.spotteds);
   }
 
   ionViewDidEnter() {
-    console.log("Aqui")
-    this.spottedProvider.getAll()
-      .then((result) => {
-        this.spotteds = result;
-      });
   }
 
   /*spotteds:any = [{

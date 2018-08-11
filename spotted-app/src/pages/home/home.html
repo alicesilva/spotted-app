@@ -9,9 +9,9 @@
 
 <ion-content padding>
   <ion-card *ngFor="let spotted of spotteds">
-    <img [src]="spotted?.spotted?.foto?.src" imageViewer>
+    <img [src]="spotted.foto" style="width:180; height:500px;">
     <ion-card-content>
-      <p>{{spotted.spotted.texto}}</p>
+      <p>{{spotted.texto}}</p>
     </ion-card-content>
     
     <ion-row>
