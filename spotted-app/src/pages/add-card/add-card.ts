@@ -4,6 +4,8 @@ import { HomePage } from '../home/home';
 import {SpottedProvider } from '../../providers/spotted/spotted';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Spotted } from '../../models/spotted';
+import { DateTime } from 'ionic-angular/components/datetime/datetime';
+import { DatePipe } from '@angular/common/src/pipes/date_pipe';
 
 /**
  * Generated class for the AddCardPage page.
@@ -54,62 +56,6 @@ export class AddCardPage {
     actionSheet.present();
   }
 
-  /*addFoto(){
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Foto',
-      buttons: [
-        {
-          text: 'Galeria',
-          icon: 'image',
-          handler: () => {
-            console.log('Galeria clicada');
-            this.selecionaGaleria();
-          }
-        }, {
-          text: 'Camera',
-          icon: 'camera',
-          handler: () => {
-            this.abrirCamera();
-          }
-        }
-      ]
-    });
-    actionSheet.present();*/
-
-    /*const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
-    }
-    
-    this.camera.getPicture(options).then((imageData) => {
-     // imageData is either a base64 encoded string or a file URI
-     // If it's base64 (DATA_URL):
-     let base64Image = 'data:image/jpeg;base64,' + imageData;
-     this.model.foto = base64Image;
-    }, (err) => {
-      console.error(err);
-    }).catch((error) => {
-      console.error(error);
-    });*/
-//}
-
-  /*abrirCamera(){
-    this.fileProvider.selecionaCamera().then(result => {
-      console.log(result);
-      if(result != null) {
-        this.model.foto = result;
-        
-        console.log(this.model.foto)
-      }
-    })
-  }
-
-  selecionaGaleria(){
-
-  }*/
-
 
   addCard() {
     this.saveSpotted()
@@ -120,24 +66,12 @@ export class AddCardPage {
       .catch(() => {
         console.log("Não salvou")
       });
-    /*this.card.texto = this.texto
-    this.card.foto = ""
-    console.log(new Date().getSeconds())
-    console.log(new Date().getMinutes())
-    console.log(new Date().getHours())
-    console.log(new Date().getFullYear())
-    let date = new Date().toLocaleString()
-    console.log(date);
-    console.log(date.charAt(0))
-    console.log(date.charAt(1))
-    console.log(date.charAt(2))
-    console.log(date.charAt(3))
-    console.log(date.charAt(4))
-    this.navCtrl.push(HomePage, this.card);*/
   }
 
   private saveSpotted() {
     this.spotted.foto = this.spottedProvider.myPhotoURL;
+    this.spotted.like = false;
+    this.spotted.date = new Date().toLocaleDateString();
     return this.spottedProvider.save(this.spotted)
   }
 

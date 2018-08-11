@@ -46,10 +46,7 @@ export class SpottedProvider {
   }
  
   getAll() {
-    return this.db.list(this.PATH, ref => ref.orderByChild('texto'));
-  }
- 
-  get(key: string) {
+    return this.db.list(this.PATH, ref => ref.orderByChild('date'));
   }
  
   save(spotted: Spotted) {
@@ -152,9 +149,6 @@ export class SpottedProvider {
     return promise;
 
   }
-
-
- 
   remove(key: string) {
     return this.db.list(this.PATH).remove(key);
   }
