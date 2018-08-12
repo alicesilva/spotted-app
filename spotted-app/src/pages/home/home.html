@@ -16,9 +16,9 @@
     
     <ion-row>
       <ion-col>
-        <button ion-button icon-start clear color="danger" (click)="like(spotted.spotted.foto.src)">
-            <ion-icon name="heart" *ngIf="likeCard"></ion-icon>
-          <ion-icon name="heart-outline" *ngIf="!likeCard"></ion-icon>
+        <button ion-button icon-start clear color="danger" (click)="like(spotted)">
+            <ion-icon name="heart" *ngIf="spotted.like"></ion-icon>
+          <ion-icon name="heart-outline" *ngIf="!spotted.like"></ion-icon>
         </button>
       </ion-col>
       <ion-col>

@@ -157,4 +157,14 @@ export class SpottedProvider {
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
   }
 
+  updateLike(data: Spotted){
+    this.db.list(this.PATH, ref => ref.orderByChild('key').equalTo(data.key)).snapshotChanges()
+    .subscribe(actions => {
+        actions.forEach(action => {
+          // here you get the key
+          console.log(action.key);
+          this.db.list(this.PATH).update(action.key, {like: true });
+        });
+    });
+  }
 }
