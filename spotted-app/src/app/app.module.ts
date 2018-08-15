@@ -16,13 +16,16 @@ import { SpottedProvider } from '../providers/spotted/spotted';
 import { DatePipe } from '@angular/common';
 import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
+import { ComentariosPage } from '../pages/comentarios/comentarios';
+import { ComentarioProvider } from '../providers/comentario/comentario';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    AddCardPage
+    AddCardPage,
+    ComentariosPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { File } from '@ionic-native/file';
     MyApp,
     HomePage,
     ListPage,
-    AddCardPage
+    AddCardPage,
+    ComentariosPage
   ],
   providers: [
     StatusBar,
@@ -51,7 +55,8 @@ import { File } from '@ionic-native/file';
     SpottedProvider,
     DatePipe,
     Camera,
-    File
+    File,
+    ComentarioProvider
 
   ]
 })

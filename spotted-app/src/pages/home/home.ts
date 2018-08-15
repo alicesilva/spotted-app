@@ -4,6 +4,7 @@ import { AddCardPage } from '../add-card/add-card';
 import {SpottedProvider} from '../../providers/spotted/spotted'
 import { Observable } from 'rxjs/Observable';
 import { Spotted } from '../../models/spotted';
+import { ComentariosPage } from '../comentarios/comentarios';
 
 @Component({
   selector: 'page-home',
@@ -38,6 +39,11 @@ export class HomePage {
 
   addCard(){
     this.navCtrl.push(AddCardPage);
+  }
+
+  comentario(){
+    console.log("oi")
+    this.navCtrl.push(ComentariosPage)
   }
 
 }
