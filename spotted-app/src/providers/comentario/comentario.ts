@@ -18,8 +18,8 @@ export class ComentarioProvider {
     console.log('Hello ComentarioProvider Provider');
   }
 
-  getAll() {
-    return this.db.list(this.PATH, ref => ref.orderByChild('texto'));
+  getAll(keySpotted: string) {
+    return this.db.list(this.PATH, ref => ref.orderByChild('spotted').equalTo(keySpotted));
   }
  
   save(comentario: Comentario) {

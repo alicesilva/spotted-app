@@ -41,9 +41,8 @@ export class HomePage {
     this.navCtrl.push(AddCardPage);
   }
 
-  comentario(){
-    console.log("oi")
-    this.navCtrl.push(ComentariosPage)
+  comentario(data){
+    this.navCtrl.push(ComentariosPage, data)
   }
 
 }
