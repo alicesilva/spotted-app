@@ -11,7 +11,7 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AddCardPage } from '../pages/add-card/add-card';
+import {AddSpottedPage} from '../pages/add-spotted/add-spotted';
 import { SpottedProvider } from '../providers/spotted/spotted';
 import { DatePipe } from '@angular/common';
 import { Camera } from '@ionic-native/camera';
@@ -24,7 +24,7 @@ import { ComentarioProvider } from '../providers/comentario/comentario';
     MyApp,
     HomePage,
     ListPage,
-    AddCardPage,
+    AddSpottedPage,
     ComentariosPage
   ],
   imports: [
@@ -45,7 +45,7 @@ import { ComentarioProvider } from '../providers/comentario/comentario';
     MyApp,
     HomePage,
     ListPage,
-    AddCardPage,
+    AddSpottedPage,
     ComentariosPage
   ],
   providers: [

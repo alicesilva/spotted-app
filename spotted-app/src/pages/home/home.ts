@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController, NavController, NavParams} from 'ionic-angular';
-import { AddCardPage } from '../add-card/add-card';
+import {AddSpottedPage} from '../add-spotted/add-spotted';
 import {SpottedProvider} from '../../providers/spotted/spotted'
 import { Observable } from 'rxjs/Observable';
 import { Spotted } from '../../models/spotted';
@@ -38,7 +38,7 @@ export class HomePage {
   }
 
   addCard(){
-    this.navCtrl.push(AddCardPage);
+    this.navCtrl.push(AddSpottedPage);
   }
 
   comentario(data){

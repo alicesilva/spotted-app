@@ -7,8 +7,9 @@ import { Spotted } from '../../models/spotted';
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
 import { DatePipe } from '@angular/common/src/pipes/date_pipe';
 
+
 /**
- * Generated class for the AddCardPage page.
+ * Generated class for the AddSpottedPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -16,10 +17,10 @@ import { DatePipe } from '@angular/common/src/pipes/date_pipe';
 
 @IonicPage()
 @Component({
-  selector: 'page-add-card',
-  templateUrl: 'add-card.html',
+  selector: 'page-add-spotted',
+  templateUrl: 'add-spotted.html',
 })
-export class AddCardPage {
+export class AddSpottedPage {
 
   spotted: Spotted
   public cameraImage : String
@@ -60,7 +61,8 @@ export class AddCardPage {
   addCard() {
     this.saveSpotted()
       .then(() => {
-        console.log("Salvou")
+        console.log("Salvou");
+        this.spottedProvider.myPhotoURL = null
         this.navCtrl.pop();
       })
       .catch(() => {
@@ -72,7 +74,8 @@ export class AddCardPage {
     this.spotted.foto = this.spottedProvider.myPhotoURL;
     this.spotted.like = false;
     this.spotted.date = new Date().toLocaleDateString();
-    return this.spottedProvider.save(this.spotted)
+    return this.spottedProvider.save(this.spotted);
   }
+
 
 }
