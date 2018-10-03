@@ -7,7 +7,6 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,14 +17,15 @@ import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { ComentariosPage } from '../pages/comentarios/comentarios';
 import { ComentarioProvider } from '../providers/comentario/comentario';
+import { LoginPage } from '../pages/login/login';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     AddSpottedPage,
-    ComentariosPage
+    ComentariosPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -44,9 +44,9 @@ import { ComentarioProvider } from '../providers/comentario/comentario';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     AddSpottedPage,
-    ComentariosPage
+    ComentariosPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
